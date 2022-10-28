@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Animated Login Form</title>
+    <link rel="stylesheet" href="Loginstyles.css" />
+  </head>
+  <body>
+    <div class="box">
+      <form autocomplete="off">
+        <h2>Authenticate</h2>
+        <div class="inputBox">
+          <input
+            type="text"
+            required="required"
+            placeholder="Email"
+            name="Email"
+            id="Email"
+          />
+          <i></i>
+        </div>
+        <div class="inputBox">
+          <input
+            type="password"
+            required="required"
+            placeholder="Enter password"
+            name="psw"
+            id="psw"
+          />
+          <i></i>
+        </div>
+        <div class="inputBox" id="name" hidden>
+          <input
+            type="name"
+            required="required"
+            placeholder="Name"
+            name="psw"
+            id="inputname"
+          />
+          <i></i>
+        </div>
+        <div class="links">
+          <a href="#">Forgot Password ?</a>
+          <a href="#" id="Signup">Signup</a>
+        </div>
+        <input type="submit" value="Login" id="SaveBtn" />
+      </form>
+    </div>
+    <script>
+      const signuptag = document.getElementById("Signup");
+      const namediv = document.getElementById("name");
+      const email = document.getElementById("Email");
+      const password = document.getElementById("psw");
+      const name = document.getElementById("inputname");
+      const SaveBtn = document.getElementById("SaveBtn");
+      let formData = JSON.parse(localStorage.getItem("LoginData")) || [];
+
+      signuptag.addEventListener("click", () => {
+        if (namediv.style.display === "none") {
+          namediv.style.display = "block";
+          signuptag.text = "Login";
+        } else {
+          namediv.style.display = "none";
+          signuptag.text = "Signup";
+        }
+      });
+
+      SaveBtn.onclick = (e) => {
+        e.preventDefault();
+        if (namediv.style.display === "block") {
+          let exist =
+            formData.length &&
+            JSON.parse(localStorage.getItem("LoginData")).some(
+              (data) => data.name == name.toLowerCase()
+            );
+
+          if (!exist) {
+            formData.push({
+              name: name.value,
+              email: email.value,
+              password: password.value,
+            });
+            localStorage.setItem("LoginData", JSON.stringify(formData));
+            alert("GG! Now you can login :)");
+          } else {
+            alert("This username exists 💀 You might already have signed Up");
+          }
+        } else {
+          let exist =
+            formData.length &&
+            JSON.parse(localStorage.getItem("LoginData")).some(
+              (data) =>
+                data.email.toLowerCase() == email.value &&
+                data.password.toLowerCase() === password.value
+            );
+          if (!exist) {
+            alert("Incorrect credentials 💀");
+          } else {
+            location.href = "Home.html";
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
