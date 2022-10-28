@@ -71,7 +71,7 @@
           let exist =
             formData.length &&
             JSON.parse(localStorage.getItem("LoginData")).some(
-              (data) => data.name == name.toLowerCase()
+              (data) => data.name == name.value
             );
 
           if (!exist) {
