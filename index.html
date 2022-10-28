@@ -1,96 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Animated Login Form</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="box">
-      <form autocomplete="off">
-        <h2>Authenticate</h2>
-        <div class="inputBox">
-          <input
-            type="text"
-            required="required"
-            placeholder="Email"
-            name="Email"
-          />
-          <i></i>
-        </div>
-        <div class="inputBox">
-          <input
-            type="password"
-            required="required"
-            placeholder="Enter password"
-            name="psw"
-          />
-          <i></i>
-        </div>
-        <div class="inputBox" id="name">
-          <input
-            type="name"
-            required="required"
-            placeholder="Name"
-            name="psw"
-          />
-          <i></i>
-        </div>
-        <div class="links">
-          <a href="#">Forgot Password ?</a>
-          <a href="#" id="Signup">Signup</a>
-        </div>
-        <input type="submit" value="Login" onclick="saveData()" />
-      </form>
+<!--divinectorweb.com-->
+<head>
+    <meta charset="UTF-8">
+    <title>a</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="content">
+        <h1>Landing</h1>
     </div>
-    <script>
-      const signuptag = document.getElementById("Signup");
-      const nameInput = document.getElementById("name");
-
-      signuptag.addEventListener("click", () => {
-        if (nameInput.style.display === "none") {
-          nameInput.style.display = "block";
-
-          signuptag.text = "Login";
-        } else {
-          nameInput.style.display = "none";
-          signuptag.text = "Signup";
-        }
-      });
-      let name = localStorage.getItem("name")
-        ? localStorage.getItem("name")
-        : "";
-      if (name != "") {
-        alert("Please visit profile");
-        window.location.href = "profile.html";
-      }
-      function saveData() {
-        let email;
-        let psw;
-        email = document.getElementById("Email").value;
-
-        psw = document.getElementById("psw").value;
-
-        let user_records = new Array();
-        user_records = JSON.parse(localStorage.getItem("users"))
-          ? JSON.parse(localStorage.getItem("users"))
-          : [];
-        if (
-          user_records.some((v) => {
-            return v.email == email && v.psw == psw;
-          })
-        ) {
-          alert("Login Pass");
-          let current_user = user_records.filter((v) => {
-            return v.email == email && v.psw == psw;
-          })[0];
-          localStorage.setItem("name", current_user.name);
-          localStorage.setItem("email", current_user.email);
-          window.location.href = "profile.html";
-        } else {
-          alert("Login Fail");
-        }
-      }
-    </script>
-  </body>
+    
+    <div class="box">
+        <ul>
+            <li>w</li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
 </html>
